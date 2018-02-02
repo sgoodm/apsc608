@@ -1,0 +1,70 @@
+
+Here is HW #2, due Tuesday 2/6.  Please show all work in order to get credit.
+
+Text: Coleman
+
+Exercises 1.2: #1, 3
+Exercises 1.4: #1, 2, 3
+Exercises 1.6: #3, 7, 8
+Exercises 1.7: #1, 7, 9, 15a
+
+Text: Farlow
+
+Read Lessons 1-5
+Problems: Lesson 5, #3, 4, 5
+
+-------------------------------------------------------------------------------
+
+Exercises 1.2
+Find the general solution of each PDE. The solution u is a function of the
+variables which appear, unless otherwise stated.
+
+1. u y = 2x
+3. u x = sin x + cos y, u = u(x, y, z)
+
+
+
+Exercises 1.4
+In Exercises 1–7, determine whether the PDE is linear or nonlinear, and prove
+your result. If it is linear, decide if it is homogeneous or nonhomogeneous. If
+it is nonlinear, point out the term or terms which make it nonlinear.
+
+1. Burger’s equation, u t + uu x = 0
+2. u xxy − (sin x)u yy + x − y = 0
+3. 2u y − 5u 3 = x
+
+
+
+Exercises 1.6
+In Exercises 1–21, separate the PDE into a system of ODEs.
+
+3. y 2 u x + x 2 u y = 0
+7. u xx + 2u yy − u x + 3u y = 0
+8. u xx − xu y + xu = 0
+
+
+
+Exercises 1.7
+In Exercises 1–14, solve the eigenvalue problem, that is, find all eigenvalues
+and associated eigenfunctions.
+
+1. y'' + λy = 0, y(0) = y(5) = 0
+
+7. x 2 y'' + 3xy' + λy = 0, y(1) = y(e 2 ) = 0
+
+9. y'' + λy = 0, y(−1) = y(1) = 0
+
+15. Solve each eigenvalue/eigenfunction problem two ways:
+i) by hand
+ii) MATLAB: Using the MATLAB routine BVP4C
+
+a) y'' + λy = 0, y(0) + y' (0) = y(1) = 0
+
+-------------------------------------------------------------------------------
+
+
+
+
+
+
+
