@@ -1,7 +1,7 @@
 clear;
 close all;
 
-% Midterm
+% midterm question 3
 
 % 3A
 figure(10)
@@ -13,6 +13,7 @@ plot(x, y)
 ylim([-1, 10])
 xlabel('-pi : pi')
 title('3A - f(x)')
+saveas(gcf, [pwd, '/outputs/q3a_actual.png'], 'png');
 
 figure(11)
 part = @(n, x) 2 .* (-1).^n .* 1./n.^2 .* cos(n.*x) + 1./(pi.*n.^3) .* ((2-n.^2.*pi.^2) .* (-1).^n - 2) .* sin(n.*x);
@@ -33,6 +34,8 @@ fplot(f3, [-pi,pi]);
 title('3A - F(x)')
 legend(["n=2" "n=10" "n=100"], 'Location', 'Best')
 
+saveas(gcf, [pwd, '/outputs/q3a_fourier.png'], 'png');
+
 
 
 
@@ -46,6 +49,8 @@ plot(x, y)
 ylim([0, 7])
 xlabel('-5 : 5')
 title('3B - f(x)')
+
+saveas(gcf, [pwd, '/outputs/q3b_actual.png'], 'png');
 
 figure(21)
 part = @(n, x) (5.*(-1).^n-5)/(n.^2.*pi.^2) .* cos(n.*pi.*x./5) + ((-1).^n./(pi.*n) - (6*pi*n.*(-1).^n)/(pi^2.*n.^2)) .* sin(n.*pi.*x./5);
@@ -66,6 +71,7 @@ fplot(f3, [-5,5]);
 title('3B - F(x)')
 legend(["n=2" "n=10" "n=100"], 'Location', 'Best')
 
+saveas(gcf, [pwd, '/outputs/q3b_fourier.png'], 'png');
 
 
 
@@ -80,6 +86,8 @@ plot(x, y)
 ylim([-2, 3])
 xlabel('-pi : pi')
 title('3C - f(x)')
+
+saveas(gcf, [pwd, '/outputs/q3c_actual.png'], 'png');
 
 figure(31)
 part = @(n, x) (3-3*(-1).^n)./n .* sin(n.*x);
@@ -101,6 +109,7 @@ title('3C - F(x)')
 legend(["n=2" "n=10" "n=100"], 'Location', 'Best')
 
 
+saveas(gcf, [pwd, '/outputs/q3c_fourier.png'], 'png');
 
 
 
