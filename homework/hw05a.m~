@@ -10,7 +10,6 @@ n = 2:N;
 k = 1:N;
 
 varnames = ["k" "q" "ra" "ia" "reala" "imaga"];
-results = [];
 
 % 6.9A
 x = [1 0 1 0];
@@ -19,10 +18,10 @@ for i=k
     ia(i) = sum(x(n).*sin(2.*pi.*i.*n./N));
 end
 ta = dft(x);
-q = "a";
-out = [k; [q q q q]; ra; ia; real(ta'); imag(ta')];
-out = array2table(out', 'VariableNames', cellstr(varnames));
-results = [results; out];
+q = "a"
+out = [k; ["a" "a" "a" "a"]; ra; ia; real(ta'); imag(ta')];
+results = array2table(out', 'VariableNames', cellstr(varnames));
+writetable(results, [pwd, '/hw05out/6_10_a.csv']);
 
 % 6.9B
 x = [1 0 -1 0];
@@ -31,10 +30,6 @@ for i=k
     ib(i) = sum(x(n).*sin(2.*pi.*i.*n./N));
 end
 tb = dft(x);
-q = "b";
-out = [k; [q q q q]; rb; ib; real(tb'); imag(tb')];
-out = array2table(out', 'VariableNames', cellstr(varnames));
-results = [results; out];
 
 % 6.9C
 x = [1 1 -1 -1];
@@ -43,10 +38,6 @@ for i=k
     ic(i) = sum(x(n).*sin(2.*pi.*i.*n./N));
 end
 tc = dft(x);
-q = "c";
-out = [k; [q q q q]; rc; ic; real(tc'); imag(tc')];
-out = array2table(out', 'VariableNames', cellstr(varnames));
-results = [results; out];
 
 % 6.9D
 x = [-1 1 1 1];
@@ -55,10 +46,6 @@ for i=k
     id(i) = sum(x(n).*sin(2.*pi.*i.*n./N));
 end
 td = dft(x);
-q = "d";
-out = [k; [q q q q]; rd; id; real(td'); imag(td')];
-out = array2table(out', 'VariableNames', cellstr(varnames));
-results = [results; out];
 
 % 6.9E
 x = [-1 0 1 2];
@@ -67,10 +54,6 @@ for i=k
     ie(i) = sum(x(n).*sin(2.*pi.*i.*n./N));
 end
 te = dft(x);
-q = "e";
-out = [k; [q q q q]; re; ie; real(te'); imag(te')];
-out = array2table(out', 'VariableNames', cellstr(varnames));
-results = [results; out];
 
 % 6.9F
 x = [1 -1 1 -1];
@@ -79,13 +62,6 @@ for i=k
     iif(i) = sum(x(n).*sin(2.*pi.*i.*n./N));
 end
 tf = dft(x);
-q = "f";
-out = [k; [q q q q]; rrf; iif; real(tf'); imag(tf')];
-out = array2table(out', 'VariableNames', cellstr(varnames));
-results = [results; out];
-
-
-writetable(results, [pwd, '/hw05out/6_9.csv']);
 
 
 % -------------------------------------------------------------------------
