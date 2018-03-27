@@ -7,61 +7,44 @@ close all;
 
 N = 4;
 n = 2:N;
-k = 1:N;
+kvals = 1:N;
 
-varnames = ["k" "q" "ra" "ia" "reala" "imaga"];
+
+varnames = ["k" "q" "real_analtical" "imag_analytical" "real_dft" "imag_dft"];
+results = [];
 
 % 6.9A
 x = [1 0 1 0];
-for i=k
-    ra(i) = x(1) + sum(x(n).*cos(2.*pi.*i.*n./N));
-    ia(i) = sum(x(n).*sin(2.*pi.*i.*n./N));
-end
-ta = dft(x);
-q = "a"
-out = [k; ["a" "a" "a" "a"]; ra; ia; real(ta'); imag(ta')];
-results = array2table(out', 'VariableNames', cellstr(varnames));
-writetable(results, [pwd, '/hw05out/6_10_a.csv']);
+out = analytical_dft(x, "A");
+results = [results; out];
 
 % 6.9B
 x = [1 0 -1 0];
-for i=k
-    rb(i) = x(1) + sum(x(n).*cos(2.*pi.*i.*n./N));
-    ib(i) = sum(x(n).*sin(2.*pi.*i.*n./N));
-end
-tb = dft(x);
+out = analytical_dft(x, "B");
+results = [results; out];
 
 % 6.9C
 x = [1 1 -1 -1];
-for i=k
-    rc(i) = x(1) + sum(x(n).*cos(2.*pi.*i.*n./N));
-    ic(i) = sum(x(n).*sin(2.*pi.*i.*n./N));
-end
-tc = dft(x);
+out = analytical_dft(x, "C");
+results = [results; out];
 
 % 6.9D
 x = [-1 1 1 1];
-for i=k
-    rd(i) = x(1) + sum(x(n).*cos(2.*pi.*i.*n./N));
-    id(i) = sum(x(n).*sin(2.*pi.*i.*n./N));
-end
-td = dft(x);
+out = analytical_dft(x, "D");
+results = [results; out];
 
 % 6.9E
 x = [-1 0 1 2];
-for i=k
-    re(i) = x(1) + sum(x(n).*cos(2.*pi.*i.*n./N));
-    ie(i) = sum(x(n).*sin(2.*pi.*i.*n./N));
-end
-te = dft(x);
+out = analytical_dft(x, "E");
+results = [results; out];
 
 % 6.9F
 x = [1 -1 1 -1];
-for i=k
-    rrf(i) = x(1) + sum(x(n).*cos(2.*pi.*i.*n./N));
-    iif(i) = sum(x(n).*sin(2.*pi.*i.*n./N));
-end
-tf = dft(x);
+out = analytical_dft(x, "F");
+results = [results; out];
+
+
+writetable(results, [pwd, '/hw05out/6_9.csv']);
 
 
 % -------------------------------------------------------------------------

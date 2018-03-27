@@ -5,83 +5,36 @@ close all;
 
 % -------------------------------------------------------------------------
 
-N = 4;
-n = 2:N;
-k = 1:N;
-
-varnames = ["k" "q" "ra" "ia" "reala" "imaga"];
 results = [];
 
 % 6.9A
 x = [1 0 1 0];
-for i=k
-    ra(i) = x(1) + sum(x(n).*cos(2.*pi.*i.*n./N));
-    ia(i) = sum(x(n).*sin(2.*pi.*i.*n./N));
-end
-ta = dft(x);
-q = "a";
-out = [k; [q q q q]; ra; ia; real(ta'); imag(ta')];
-out = array2table(out', 'VariableNames', cellstr(varnames));
+out = compare_dft(x, "A");
 results = [results; out];
 
 % 6.9B
 x = [1 0 -1 0];
-for i=k
-    rb(i) = x(1) + sum(x(n).*cos(2.*pi.*i.*n./N));
-    ib(i) = sum(x(n).*sin(2.*pi.*i.*n./N));
-end
-tb = dft(x);
-q = "b";
-out = [k; [q q q q]; rb; ib; real(tb'); imag(tb')];
-out = array2table(out', 'VariableNames', cellstr(varnames));
+out = compare_dft(x, "B");
 results = [results; out];
 
 % 6.9C
 x = [1 1 -1 -1];
-for i=k
-    rc(i) = x(1) + sum(x(n).*cos(2.*pi.*i.*n./N));
-    ic(i) = sum(x(n).*sin(2.*pi.*i.*n./N));
-end
-tc = dft(x);
-q = "c";
-out = [k; [q q q q]; rc; ic; real(tc'); imag(tc')];
-out = array2table(out', 'VariableNames', cellstr(varnames));
+out = compare_dft(x, "C");
 results = [results; out];
 
 % 6.9D
 x = [-1 1 1 1];
-for i=k
-    rd(i) = x(1) + sum(x(n).*cos(2.*pi.*i.*n./N));
-    id(i) = sum(x(n).*sin(2.*pi.*i.*n./N));
-end
-td = dft(x);
-q = "d";
-out = [k; [q q q q]; rd; id; real(td'); imag(td')];
-out = array2table(out', 'VariableNames', cellstr(varnames));
+out = compare_dft(x, "D");
 results = [results; out];
 
 % 6.9E
 x = [-1 0 1 2];
-for i=k
-    re(i) = x(1) + sum(x(n).*cos(2.*pi.*i.*n./N));
-    ie(i) = sum(x(n).*sin(2.*pi.*i.*n./N));
-end
-te = dft(x);
-q = "e";
-out = [k; [q q q q]; re; ie; real(te'); imag(te')];
-out = array2table(out', 'VariableNames', cellstr(varnames));
+out = compare_dft(x, "E");
 results = [results; out];
 
 % 6.9F
 x = [1 -1 1 -1];
-for i=k
-    rrf(i) = x(1) + sum(x(n).*cos(2.*pi.*i.*n./N));
-    iif(i) = sum(x(n).*sin(2.*pi.*i.*n./N));
-end
-tf = dft(x);
-q = "f";
-out = [k; [q q q q]; rrf; iif; real(tf'); imag(tf')];
-out = array2table(out', 'VariableNames', cellstr(varnames));
+out = compare_dft(x, "F");
 results = [results; out];
 
 
@@ -195,7 +148,7 @@ xval = 1:32;
 
 % 6.11A
 n = 1:31;
-x = [1 n];
+x = 1 ./ [1 n];
 d = dft(x);
 m = abs(d);
 figure();
@@ -205,7 +158,7 @@ saveas(gcf, [pwd, '/hw05out/6_11_a.png'], 'png');
 
 % 6.11B
 n = 1:31;
-x = [1 n.^2];
+x = 1 ./ [1 n.^2];
 d = dft(x);
 m = abs(d);
 figure();
@@ -215,7 +168,7 @@ saveas(gcf, [pwd, '/hw05out/6_11_b.png'], 'png');
 
 % 6.11C
 n = 1:31;
-x = [1 factorial(n)];
+x = 1 ./ [1 factorial(n)];
 d = dft(x);
 m = abs(d);
 figure();
