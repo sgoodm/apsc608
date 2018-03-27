@@ -53,8 +53,8 @@ m = abs(d);
 p = angle(d);
 figure();
 plot(xval, m);
-title(['6.10 ', q, ' - Magnitude'])
-saveas(gcf, [pwd, '/hw05out/6_10_a_magnitude.png'], 'png');
+title(['6.10 ', q, ' - Amplitude'])
+saveas(gcf, [pwd, '/hw05out/6_10_a_amplitude.png'], 'png');
 
 figure();
 plot(xval, p);
@@ -69,8 +69,8 @@ m = abs(d);
 p = angle(d);
 figure();
 plot(xval, m);
-title(['6.10 ', q, ' - Magnitude'])
-saveas(gcf, [pwd, '/hw05out/6_10_b_magnitude.png'], 'png');
+title(['6.10 ', q, ' - Amplitude'])
+saveas(gcf, [pwd, '/hw05out/6_10_b_amplitude.png'], 'png');
 
 figure();
 plot(xval, p);
@@ -79,14 +79,14 @@ saveas(gcf, [pwd, '/hw05out/6_10_b_phase.png'], 'png');
 
 % 6.10C
 q = 'C';
-x = [1:21, zeros(1, 11)];
+x = [0:20, zeros(1, 11)];
 d = dft(x);
 m = abs(d);
 p = angle(d);
 figure();
 plot(xval, m);
-title(['6.10 ', q, ' - Magnitude'])
-saveas(gcf, [pwd, '/hw05out/6_10_c_magnitude.png'], 'png');
+title(['6.10 ', q, ' - Amplitude'])
+saveas(gcf, [pwd, '/hw05out/6_10_c_amplitude.png'], 'png');
 
 figure();
 plot(xval, p);
@@ -95,14 +95,14 @@ saveas(gcf, [pwd, '/hw05out/6_10_c_phase.png'], 'png');
 
 % 6.10D
 q = 'D';
-x = [1:11, 20-(12:21), zeros(1, 11)];
+x = [0:10, 20-(11:20), zeros(1, 11)];
 d = dft(x);
 m = abs(d);
 p = angle(d);
 figure();
 plot(xval, m);
-title(['6.10 ', q, ' - Magnitude'])
-saveas(gcf, [pwd, '/hw05out/6_10_d_magnitude.png'], 'png');
+title(['6.10 ', q, ' - Amplitude'])
+saveas(gcf, [pwd, '/hw05out/6_10_d_amplitude.png'], 'png');
 
 figure();
 plot(xval, p);
@@ -111,14 +111,14 @@ saveas(gcf, [pwd, '/hw05out/6_10_d_phase.png'], 'png');
 
 % 6.10E
 q = 'E';
-x = [cos(10.*pi.*(1:11)/11), zeros(1,21)];
+x = [cos(10.*pi.*(0:10)/11), zeros(1,21)];
 d = dft(x);
 m = abs(d);
 p = angle(d);
 figure();
 plot(xval, m);
-title(['6.10 ', q, ' - Magnitude'])
-saveas(gcf, [pwd, '/hw05out/6_10_e_magnitude.png'], 'png');
+title(['6.10 ', q, ' - Amplitude'])
+saveas(gcf, [pwd, '/hw05out/6_10_e_amplitude.png'], 'png');
 
 figure();
 plot(xval, p);
@@ -127,14 +127,14 @@ saveas(gcf, [pwd, '/hw05out/6_10_e_phase.png'], 'png');
 
 % 6.10F
 q = 'F';
-x = [cos(9.*pi.*(1:11)/11), zeros(1,21)];
+x = [cos(9.*pi.*(0:10)/11), zeros(1,21)];
 d = dft(x);
 m = abs(d);
 p = angle(d);
 figure();
 plot(xval, m);
-title(['6.10 ', q, ' - Magnitude'])
-saveas(gcf, [pwd, '/hw05out/6_10_f_magnitude.png'], 'png');
+title(['6.10 ', q, ' - Amplitude'])
+saveas(gcf, [pwd, '/hw05out/6_10_f_amplitude.png'], 'png');
 
 figure();
 plot(xval, p);
@@ -151,28 +151,47 @@ n = 1:31;
 x = 1 ./ [1 n];
 d = dft(x);
 m = abs(d);
+p = phase(d);
 figure();
 plot(xval, m);
-title('6.11 A Magnitude')
-saveas(gcf, [pwd, '/hw05out/6_11_a.png'], 'png');
+title('6.11 A amplitude')
+saveas(gcf, [pwd, '/hw05out/6_11_a_magnitude.png'], 'png');
+
+figure();
+plot(xval, p);
+title(['6.11 A - Phase'])
+saveas(gcf, [pwd, '/hw05out/6_11_a_phase.png'], 'png');
 
 % 6.11B
 n = 1:31;
 x = 1 ./ [1 n.^2];
 d = dft(x);
 m = abs(d);
+p = phase(d);
 figure();
 plot(xval, m);
-title('6.11 B Magnitude')
-saveas(gcf, [pwd, '/hw05out/6_11_b.png'], 'png');
+title('6.11 B amplitude')
+saveas(gcf, [pwd, '/hw05out/6_11_b_magnitude.png'], 'png');
+
+figure();
+plot(xval, p);
+title(['6.11 B - Phase'])
+saveas(gcf, [pwd, '/hw05out/6_11_b_phase.png'], 'png');
+
 
 % 6.11C
 n = 1:31;
 x = 1 ./ [1 factorial(n)];
 d = dft(x);
 m = abs(d);
+p = phase(d);
 figure();
 plot(xval, m);
-title('6.11 C Magnitude')
-saveas(gcf, [pwd, '/hw05out/6_11_c.png'], 'png');
+title('6.11 C amplitude')
+saveas(gcf, [pwd, '/hw05out/6_11_c_magnitude.png'], 'png');
+
+figure();
+plot(xval, p);
+title(['6.11 C - Phase'])
+saveas(gcf, [pwd, '/hw05out/6_11_c_phase.png'], 'png');
 
