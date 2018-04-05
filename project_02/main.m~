@@ -1,0 +1,69 @@
+% seth goodman
+% apsc 608 - spring 2018
+% project 02
+
+%{
+
+Here is Project #2, due Tuesday 4/10.
+
+Using your own photograph, apply wavelet methods to compress the size of the image while maintaining good quality.  
+Your grade for this project will be based on your approach and discussion of your procedure and results.  
+As always, neatness and good organization will also be evaluated.
+%}
+
+%{
+References:
+
+https://www.mathworks.com/help/wavelet/compression.html
+
+%}
+
+clear;
+close all;
+
+input_path = 'input_image.jpg';
+% [X, map] = rgb2ind(imread(input_path),128);
+% 
+% % Select ROI (must be square, power of 2)
+% x = X(1:1024,1:1024);  
+% 
+% image(x)
+% axis square
+% colormap(map)
+% title('Original Image')
+% 
+% output_path = 'output_image.wtc';
+% 
+% method = 'step';
+% [cr,bpp] = wcompress('c', x, output_path, method);
+% 
+% y = imread(output_path);
+% 
+% image(y)
+% axis square
+% colormap(map)
+% title('Compressed Image')
+% 
+% 
+% 
+% % Uncompress
+% z = wcompress('u', output_path);
+% 
+% 
+
+
+
+[rX, map] = rgb2ind(imread(input_path),128);
+X = rX(1:1024,1:1024);  
+colormap(map)
+
+[cratio,bpp] = wcompress('c',X,'wpeppers.wtc','spiht','maxloop',12);
+Xc = wcompress('u','wpeppers.wtc');
+
+subplot(1,2,1); image(X);  title('Original image'), axis square
+subplot(1,2,2); image(Xc); title('Compressed image'), axis square
+
+
+
+
+
