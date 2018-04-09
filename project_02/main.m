@@ -27,6 +27,16 @@ waveletAnalyzer
 clear;
 close all;
 
+waveletAnalyzer
+
+
+
+
+
+
+
+%{
+
 input_path = 'input_image.jpg';
 output_path = 'output_image.wtc';
 
@@ -46,6 +56,7 @@ image(X);  title('Original image'), axis square
 figure()
 image(Xc); title('Compressed image'), axis square
 
+%}
 
 
 
