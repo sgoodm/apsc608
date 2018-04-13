@@ -1,0 +1,11 @@
+Here is HW #6 , due Tuesday 4/17.
+
+
+The ABCD system defined in the attachment is in continuous time so it needs to be discretized using 'c2d'. Is the system stable?  How many inputs and outputs does this system have?
+
+
+For the discrete-time system, compute all of the system's impulse responses.
+
+
+Then, using both convolution and 'dlsim', demonstrate that you get the same response due to two sets of arbitrary inputs.
+
