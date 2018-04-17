@@ -17,35 +17,76 @@ B = [0.0073  0
 
 C = [0 1 0 0
      0 0 0 1];
- 
+
 D = [0 0
      0 0];
 
 sysc = ss(A ,B, C, D);
 
 % define time step
-Ts = 0.1;
+Ts = 1;
 
 % discretize system
 sysd = c2d(sysc, Ts);
 
-% define input vector
-% u = [2 3 5 9; 1 5 7 2;];
-u = [2 3 1; 1 5 1];
-
-% ???
-dlsim(A, B, C, D, u)
 
 % Is the system stable?  
-% How many inputs and outputs does this system have?
+bool_stable = isstable(sysd);
+% Yes, system is stable
 
 % For the discrete-time system, compute all of the system's impulse responses
-figure()
+% How many inputs and outputs does this system have?
 impulse(sysd)
+% 4 impulse responses (2 input x 2 output)
+saveas(gcf, [pwd, '/impulse.png'], 'png');
+
 
 % Using both convolution and dlsim, demonstrate that you get the same response due to two sets of arbitrary inputs.
 
+% define input vector
+u = [
+    2 1 6 5 3
+    3 9 5 2 1];
 
+% dlsim
+figure()
+dlsim(A, B, C, D, u);
+
+% figure()
+% lsim(sysd, u)
+
+saveas(gcf, [pwd, '/system.png'], 'png');
+
+% ---------------------------------------------
+
+
+[Y,X] = dlsim(A, B, C, D, u);
+
+[h, t] = impulse(sysd, length(u)-1);
+
+% conv
+y1 = conv(h(:,1,1)', u(1,:)) + conv(h(:,1,2)', u(2,:));
+y2 = conv(h(:,2,1)', u(1,:)) + conv(h(:,2,2)', u(2,:));
+
+figure()
+
+subplot(2,1,1);
+plot(y1(1:5))
+ylabel("Out(1)")
+title("Convolution Results")
+hold on
+plot(u(1,:), 'r-')
+plot(u(2,:), 'r--')
+
+subplot(2,1,2);
+plot(y2(1:5))
+ylabel("Out(2)")
+xlabel("Time (seconds)")
+hold on
+plot(u(1,:), 'r-')
+plot(u(2,:), 'r--')
+
+saveas(gcf, [pwd, '/convolution.png'], 'png');
 
 
 
