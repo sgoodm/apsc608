@@ -1,0 +1,42 @@
+% q7
+% colement 11.2 #6
+
+c = 1;
+tstep = 0.1;
+xstep = 0.2;
+
+e = c * tstep / xstep;
+
+t = 0:tstep:0.2;
+x = 0:xstep:1+length(t)*xstep;
+
+factual = @(x,t) (3.*x) ./ (1 + 3.*t);
+actual = factual(x, 0.2);
+
+u = zeros(length(x), length(t));
+
+ic = @(x) 3*x;
+
+for j = 1:length(t)-1
+    for i = 1:length(x)-j
+
+        if j == 1
+            u(i,j) = ic(x(i));
+        end
+
+        if i == 1
+            u(i,j) = 0;
+        else
+            u(i,j+1) = (1-e^2) * u(i,j) + (e/2) * (1+e) * u(i-1,j) + (e/2) * (e-1) * u(i+1,j);
+        end
+        
+    end
+end
+
+out = [x; u'; actual]';
+
+
+output = array2table(out, 'VariableNames',{'x', 't0', 't1', ' t2', 't2exact'});
+writetable(output, [pwd, '/outputs/q7.csv']);
+
+
