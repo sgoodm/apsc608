@@ -29,7 +29,7 @@ Ts = 1/Fs;
 t = 0:1/Fs:N-1/Fs;
 
 u1 = sin(2*pi*30*t);
-u2 = sin(2*pi*75*t);
+u2 = sin(2*pi*105*t);
 u = [u1; u2];
  
 % build system
@@ -46,12 +46,9 @@ data = iddata(y, u', Ts);
 
 
 figure()
-impulse(sysd)
-saveas(gcf, [pwd, '/outputs/q8_impulse.png'], 'png');
+lsim(sysd, u)
+saveas(gcf, [pwd, '/output/system.png'], 'png');
 
-figure()
-step(sysd)
-saveas(gcf, [pwd, '/outputs/q8_step.png'], 'png');
 
-% systemIdentification
+systemIdentification
 
