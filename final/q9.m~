@@ -4,7 +4,7 @@
 % https://www.mathworks.com/help/ident/gs/about-system-identification.html
 % http://ctms.engin.umich.edu/CTMS/index.php?example=Introduction&section=SystemModeling#5
 
-clear;
+% clear;
 close all;
 
 m = 0.2;
@@ -97,18 +97,8 @@ lsim(sysd, ug)
 saveas(gcf, [pwd, '/outputs/q9_gauss_func.png'], 'png');
 
 
-nlf = @(t) (t^2)*cos(4*t);
-nl = nlf(tc);
-
-
 figure()
-
-plot(tc(1:101), u, 'r-')
-hold on
-stairs(tc(1:101), ycf(1:101)*Ts)
-ylabel("Amplitude")
-xlabel("Time (seconds)")
-title("Non-Linear Results")
+sim(nlarx1, ug')
 saveas(gcf, [pwd, '/outputs/q9_nonlinear.png'], 'png');
 
 
